@@ -11,8 +11,13 @@
 #pragma once
 #include <JuceHeader.h>
 
-class CustomDrawnSlider : public juce::LookAndFeel_V4
+namespace juce
+{
+
+class CustomDrawnSlider : public LookAndFeel_V4, public Slider
 {
 public:
-    //
+    void drawRotarySlider(Graphics &, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider &);
+    //Slider create();
 };
+}

@@ -21,7 +21,8 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
-    CustomDrawnSlider m_customDrawnSlider;
-
+    juce::CustomDrawnSlider m_customDrawnSliderLookAndFeel;
+    juce::Slider mySlider;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
