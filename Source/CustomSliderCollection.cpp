@@ -53,16 +53,16 @@ namespace juce
         }
         
         //custom layout
-        Path constantArc;
-        constantArc.addCentredArc (bounds.getCentreX(),
+       Path constantArc;
+       constantArc.addCentredArc(bounds.getCentreX(),
                                 bounds.getCentreY(),
-                                arcRadius- 10,
-                                arcRadius- 10 ,
+                                arcRadius- 12.5,
+                                arcRadius- 12.5 ,
                                 0.0f,
                                 0.0f,
-                                360,
+                                MathConstants<float>::twoPi,
                                 true);
-
+      
         if(sliderPos == 0)
         {
             g.setColour(juce::Colours::grey);
@@ -71,10 +71,12 @@ namespace juce
         g.setColour(juce::Colours::white);
         g.strokePath (constantArc, PathStrokeType (lineW / 2.0f, PathStrokeType::curved, PathStrokeType::rounded));
         
+       
+       //g.drawEllipse(bounds.getCentreX(),bounds.getCentreY(),bounds.getCentreX() + (arcRadius-12),bounds.getCentreY() + (arcRadius-12), 4.0f);
         
 
         //thumb
-        auto thumbWidth = lineW * 1.5F;
+        auto thumbWidth = lineW * 1.3F;
         Point<float> thumbPoint (bounds.getCentreX() + (arcRadius-25)  * std::cos (toAngle - MathConstants<float>::halfPi),
                                  bounds.getCentreY() + (arcRadius-25)  * std::sin (toAngle - MathConstants<float>::halfPi));
         if(sliderPos == 0)
