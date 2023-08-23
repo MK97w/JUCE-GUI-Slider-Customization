@@ -51,18 +51,40 @@ namespace juce
             g.setColour (juce::Colours::whitesmoke);
             g.strokePath (valueArc, PathStrokeType (lineW, PathStrokeType::curved, PathStrokeType::rounded));
         }
+        
+        //custom layout
+        Path constantArc;
+        constantArc.addCentredArc (bounds.getCentreX(),
+                                bounds.getCentreY(),
+                                arcRadius- 10,
+                                arcRadius- 10 ,
+                                0.0f,
+                                0.0f,
+                                360,
+                                true);
 
-        //thumb
-        auto thumbWidth = lineW * 2.0f;
-        Point<float> thumbPoint (bounds.getCentreX() + arcRadius * std::cos (toAngle - MathConstants<float>::halfPi),
-                                 bounds.getCentreY() + arcRadius * std::sin (toAngle - MathConstants<float>::halfPi));
-
-        if(sliderPos == 0) //found when debugging find a better solution
-        g.setColour(juce::Colours::grey);
+        if(sliderPos == 0)
+        {
+            g.setColour(juce::Colours::grey);
+        }//found when debugging find a better solution
         else
         g.setColour(juce::Colours::white);
-        //g.fillEllipse (Rectangle<float> (thumbWidth, thumbWidth).withCentre (thumbPoint));
-        g.drawLine(backgroundArc.getBounds().getCentreX(),backgroundArc.getBounds().getCentreY(),thumbPoint.getX(),thumbPoint.getY(),lineW);    
+        g.strokePath (constantArc, PathStrokeType (lineW / 2.0f, PathStrokeType::curved, PathStrokeType::rounded));
+        
+        
+
+        //thumb
+        auto thumbWidth = lineW * 1.5F;
+        Point<float> thumbPoint (bounds.getCentreX() + (arcRadius-25)  * std::cos (toAngle - MathConstants<float>::halfPi),
+                                 bounds.getCentreY() + (arcRadius-25)  * std::sin (toAngle - MathConstants<float>::halfPi));
+        if(sliderPos == 0)
+        {
+            g.setColour(juce::Colours::grey);
+        }//found when debugging find a better solution
+        else
+        g.setColour(juce::Colours::white);
+        g.fillEllipse (Rectangle<float> (thumbWidth, thumbWidth).withCentre (thumbPoint));
+        //g.drawLine(backgroundArc.getBounds().getCentreX(),backgroundArc.getBounds().getCentreY(),thumbPoint.getX(),thumbPoint.getY(),lineW);
     }
     
 }
