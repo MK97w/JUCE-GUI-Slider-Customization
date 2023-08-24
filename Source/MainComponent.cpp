@@ -14,6 +14,7 @@ MainComponent::MainComponent()
 
     halfArc_Slider.setLookAndFeel(&halfArc_Slider);
     halfArc_Slider.setRange(0.0f, 10.0f);
+    halfArc_Slider.setValue(10.0f/2.0f);
     addAndMakeVisible(halfArc_Slider);
     halfArc_Slider.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     halfArc_Slider.setTextBoxStyle(juce::Slider::NoTextBox, true, 100, 100);

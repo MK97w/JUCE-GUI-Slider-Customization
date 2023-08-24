@@ -111,14 +111,8 @@ namespace juce
             rotaryStartAngle,
             rotaryEndAngle,
             true);
-
-        if (sliderPos == 0)
-        {
-            g.setColour(juce::Colours::darkblue);
-        }//found when debugging find a better solution
-        else
             g.setColour(juce::Colours::grey);
-        g.strokePath(backgroundArc, PathStrokeType(lineW, PathStrokeType::curved, PathStrokeType::rounded));
+            g.strokePath(backgroundArc, PathStrokeType(lineW, PathStrokeType::curved, PathStrokeType::rounded));
 
         if (slider.isEnabled())
         {
@@ -128,11 +122,16 @@ namespace juce
                 arcRadius,
                 arcRadius,
                 0.0f,
-                rotaryStartAngle,
+                (rotaryStartAngle+rotaryEndAngle)/2,
                 toAngle,
                 true);
-
-            g.setColour(juce::Colours::darkgoldenrod);
+            if (sliderPos == ((rotaryStartAngle + rotaryEndAngle) / 2.0f))
+            {
+                valueArc.clear();
+                g.setColour(juce::Colours::grey);
+            }
+            else
+            g.setColour(juce::Colours::white);
             g.strokePath(valueArc, PathStrokeType(lineW, PathStrokeType::curved, PathStrokeType::rounded));
         }
 
@@ -146,13 +145,7 @@ namespace juce
             0.0f,
             MathConstants<float>::twoPi,
             true);
-
-        if (sliderPos == 0)
-        {
-            g.setColour(juce::Colours::grey);
-        }//found when debugging find a better solution
-        else
-            g.setColour(juce::Colours::white);
+        g.setColour(juce::Colours::white);
         g.strokePath(constantArc, PathStrokeType(lineW / 2.0f, PathStrokeType::curved, PathStrokeType::rounded));
 
 
@@ -163,12 +156,7 @@ namespace juce
         auto thumbWidth = lineW * 1.3F;
         Point<float> thumbPoint(bounds.getCentreX() + (arcRadius - 25) * std::cos(toAngle - MathConstants<float>::halfPi),
             bounds.getCentreY() + (arcRadius - 25) * std::sin(toAngle - MathConstants<float>::halfPi));
-        if (sliderPos == 0)
-        {
-            g.setColour(juce::Colours::grey);
-        }//found when debugging find a better solution
-        else
-            g.setColour(juce::Colours::white);
+        g.setColour(juce::Colours::white);
         g.fillEllipse(Rectangle<float>(thumbWidth, thumbWidth).withCentre(thumbPoint));
         //g.drawLine(backgroundArc.getBounds().getCentreX(),backgroundArc.getBounds().getCentreY(),thumbPoint.getX(),thumbPoint.getY(),lineW);
     }
