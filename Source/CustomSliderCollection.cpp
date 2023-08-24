@@ -11,7 +11,7 @@
 #include "CustomSliderCollection.h"
 namespace juce
 {
-    void CustomDrawnSlider::drawRotarySlider(Graphics& g, int x, int y, int width, int height, float sliderPos, float rotaryStartAngle, float rotaryEndAngle, Slider& slider)
+    void CustomDrawnSlider::NeuralDSP::drawRotarySlider(Graphics& g, int x, int y, int width, int height, float sliderPos, float rotaryStartAngle, float rotaryEndAngle, Slider& slider)
     {
         auto outline = slider.findColour (Slider::rotarySliderOutlineColourId);
         auto fill    = slider.findColour (Slider::rotarySliderFillColourId);

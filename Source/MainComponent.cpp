@@ -3,7 +3,7 @@
 //==============================================================================
 MainComponent::MainComponent()
 {
-    juce::LookAndFeel::setDefaultLookAndFeel(&m_customDrawnSliderLookAndFeel);
+    juce::LookAndFeel::setDefaultLookAndFeel(&mySlider);
     setSize (400, 400);
     mySlider.setRange(0.0f, 10.0f);
     addAndMakeVisible(mySlider);

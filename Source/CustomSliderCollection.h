@@ -14,10 +14,13 @@
 namespace juce
 {
 
-class CustomDrawnSlider : public LookAndFeel_V4, public Slider
+class CustomDrawnSlider 
 {
 public:
-    void drawRotarySlider(Graphics &, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider &);
-    //Slider create();
+    struct NeuralDSP: public Slider ,public LookAndFeel_V4
+    {
+       void drawRotarySlider(Graphics&, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider&);
+    };
+    
 };
 }
