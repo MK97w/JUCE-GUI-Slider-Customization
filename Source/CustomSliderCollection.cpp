@@ -125,13 +125,16 @@ namespace juce
                 (rotaryStartAngle+rotaryEndAngle)/2,
                 toAngle,
                 true);
-            if (sliderPos == ((rotaryStartAngle + rotaryEndAngle) / 2.0f))
+            if (sliderPos == 0.5f) //find a better solution!
             {
                 valueArc.clear();
-                g.setColour(juce::Colours::grey);
+               // g.setColour(juce::Colours::grey);
             }
             else
-            g.setColour(juce::Colours::white);
+            {
+                g.setColour(juce::Colours::white);
+            }
+            
             g.strokePath(valueArc, PathStrokeType(lineW, PathStrokeType::curved, PathStrokeType::rounded));
         }
 
