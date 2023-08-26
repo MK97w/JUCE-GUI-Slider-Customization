@@ -24,6 +24,7 @@ private:
     //juce::CustomDrawnSlider m_customDrawnSliderLookAndFeel;
     juce::CustomDrawnSlider::NeuralDSP_fullArc fullArc_Slider;
     juce::CustomDrawnSlider::NeuralDSP_halfArc halfArc_Slider;
+    juce::CustomDrawnSlider::svgSlider arrow_Slider;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

@@ -163,5 +163,21 @@ namespace juce
         g.fillEllipse(Rectangle<float>(thumbWidth, thumbWidth).withCentre(thumbPoint));
         //g.drawLine(backgroundArc.getBounds().getCentreX(),backgroundArc.getBounds().getCentreY(),thumbPoint.getX(),thumbPoint.getY(),lineW);
     }
+
+void CustomDrawnSlider::svgSlider::drawRotarySlider(Graphics &g , int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider & s)
+    {
+        if (const auto svg = XmlDocument::parse(BinaryData::arrow_svg))
+        {
+        const auto drawable = Drawable::createFromSVG(*svg);
+        drawable->setTransformToFit(Rectangle<int>(x, y, width, height).toFloat(), RectanglePlacement::centred);
+            
+            //drawable->setColour(int colourID, <#Colour newColour#>)
+
+        const float angle = rotaryStartAngle + sliderPosProportional * (rotaryEndAngle - rotaryStartAngle);
+        drawable->draw(g, 1.f, AffineTransform::rotation(angle, width / 2.f, height / 2.f));
+        }
+    }
+
+
     
 }
