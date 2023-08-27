@@ -33,6 +33,9 @@ MainComponent::MainComponent()
 MainComponent::~MainComponent()
 {
     juce::LookAndFeel::setDefaultLookAndFeel(nullptr);
+    fullArc_Slider.setLookAndFeel(nullptr);
+    halfArc_Slider.setLookAndFeel(nullptr);
+    arrow_Slider.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
