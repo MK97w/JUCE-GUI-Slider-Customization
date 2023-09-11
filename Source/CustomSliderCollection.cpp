@@ -13,8 +13,8 @@ namespace juce
 {
     void CustomDrawnSlider::NeuralDSP_fullArc::drawRotarySlider(Graphics& g, int x, int y, int width, int height, float sliderPos, float rotaryStartAngle, float rotaryEndAngle, Slider& slider)
     {
-        auto outline = slider.findColour (Slider::rotarySliderOutlineColourId);
-        auto fill    = slider.findColour (Slider::rotarySliderFillColourId);
+        //auto outline = slider.findColour (Slider::rotarySliderOutlineColourId);
+        //auto fill    = slider.findColour (Slider::rotarySliderFillColourId);
 
         auto bounds = Rectangle<int> (x, y, width, height).toFloat().reduced (10);
 
@@ -63,11 +63,10 @@ namespace juce
                                 bounds.getCentreY(),
                                 arcRadius- 12.5,
                                 arcRadius- 12.5 ,
-                                0.0f,
+                                MathConstants<float>::halfPi,
                                 0.0f,
                                 MathConstants<float>::twoPi,
                                 true);
-      
         if(sliderPos == 0)
         {
             g.setColour(juce::Colours::grey);
@@ -144,7 +143,7 @@ namespace juce
             bounds.getCentreY(),
             arcRadius - 12.5,
             arcRadius - 12.5,
-            0.0f,
+            MathConstants<float>::halfPi,
             0.0f,
             MathConstants<float>::twoPi,
             true);
