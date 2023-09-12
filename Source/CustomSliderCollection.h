@@ -31,6 +31,10 @@ public:
     {
         void drawRotarySlider(Graphics&, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider&);
     };
+    struct pngSlider : Slider, LookAndFeel_V4
+    {
+        void drawRotarySlider(Graphics&, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider&);
+    };
 
 private:
     

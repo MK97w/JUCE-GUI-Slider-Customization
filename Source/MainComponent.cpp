@@ -26,6 +26,11 @@ MainComponent::MainComponent()
     arrow_Slider.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     arrow_Slider.setTextBoxStyle(juce::Slider::NoTextBox, true, 100, 100);
     
+    knob_Slider.setLookAndFeel(&knob_Slider);
+    knob_Slider.setRange(0.0f, 10.0f);
+    addAndMakeVisible(knob_Slider);
+    knob_Slider.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    knob_Slider.setTextBoxStyle(juce::Slider::NoTextBox, true, 100, 100);
     
 
 }
@@ -36,6 +41,7 @@ MainComponent::~MainComponent()
     fullArc_Slider.setLookAndFeel(nullptr);
     halfArc_Slider.setLookAndFeel(nullptr);
     arrow_Slider.setLookAndFeel(nullptr);
+    knob_Slider.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
@@ -57,5 +63,6 @@ void MainComponent::resized()
     fullArc_Slider.setBounds(0 , 0 , 200, 200); //when downsized slşder looks awful!
     halfArc_Slider.setBounds(200, 0, 200, 200);
     arrow_Slider.setBounds(400,0, 200, 200);
+    knob_Slider.setBounds(600, 0, 200, 200);
 }
 

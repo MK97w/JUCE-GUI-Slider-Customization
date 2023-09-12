@@ -164,19 +164,41 @@ namespace juce
     }
 
 void CustomDrawnSlider::svgSlider::drawRotarySlider(Graphics &g , int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider & s)
+{
+    if (const auto svg = XmlDocument::parse(BinaryData::arrow_svg))
     {
-        if (const auto svg = XmlDocument::parse(BinaryData::arrow_svg))
-        {
         const auto drawable = Drawable::createFromSVG(*svg);
         drawable->setTransformToFit(Rectangle<int>(x, y, width, height).toFloat(), RectanglePlacement::centred);
             
             //drawable->setColour(int colourID, <#Colour newColour#>)
 
         const float angle = rotaryStartAngle + sliderPosProportional * (rotaryEndAngle - rotaryStartAngle);
-        drawable->draw(g, 1.f, AffineTransform::rotation(angle, width / 2.f, height / 2.f));
-        }
+          drawable->draw(g, 1.f, AffineTransform::rotation(angle, width / 2.f, height / 2.f));
     }
+}
 
+void CustomDrawnSlider::pngSlider::drawRotarySlider(Graphics& g, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, Slider& s)
+{
+    const double rotation = (s.getValue()  - s.getMinimum()) / (s.getMaximum() - s.getMinimum());
+    Image img = ImageCache::getFromMemory(BinaryData::knob_silver_png, BinaryData::knob_silver_pngSize);
+    const int frames = img.getHeight() / img.getWidth();
+    const int frameId = (int)ceil(rotation * ((double)frames - 1.0));
+    const float radius = jmin(width / 2.0f, height / 2.0f);
+    const float centerX = x + width * 0.5f;
+    const float centerY = y + height * 0.5f;
+    const float rx = centerX - radius - 1.0f;
+    const float ry = centerY - radius;
+
+    g.drawImage(img,
+        (int)rx,
+        (int)ry,
+        2 * (int)radius,
+        2 * (int)radius,
+        0,
+        frameId * img.getWidth(),
+        img.getWidth(),
+        img.getWidth());
+}
 
     
 }

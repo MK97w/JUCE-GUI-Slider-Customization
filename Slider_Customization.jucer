@@ -7,6 +7,7 @@
     <GROUP id="{ADFA13CC-0B13-8C49-D091-9BFA46FC75D6}" name="Source">
       <GROUP id="{9A931EA7-38BA-05FE-8255-8EC9C40B668E}" name="Assets">
         <FILE id="AlGniM" name="arrow.svg" compile="0" resource="1" file="Source/Assets/arrow.svg"/>
+        <FILE id="RNYRfA" name="knob_silver.png" compile="0" resource="1" file="Source/Assets/knob_silver.png"/>
       </GROUP>
       <FILE id="eVpCDG" name="CustomSliderCollection.cpp" compile="1" resource="0"
             file="Source/CustomSliderCollection.cpp"/>
